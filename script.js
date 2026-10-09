@@ -1,20 +1,58 @@
 // YouTube Background Music Configuration
-const YOUTUBE_VIDEO_ID = "vhVBWw6rId0"; // Extracted from your link
-let ytPlayer;
+const YOUTUBE_VIDEO_ID = "vhVBWw6rId0"; // "Heaven Can Wait"
+var ytPlayer;
+var playerReady = false;
 
-function onYouTubeIframeAPIReady() {
+window.onYouTubeIframeAPIReady = function() {
   ytPlayer = new YT.Player('youtube-player', {
-    height: '0',
-    width: '0',
+    height: '1',
+    width: '1',
     videoId: YOUTUBE_VIDEO_ID,
     playerVars: {
       'autoplay': 0,
       'controls': 0,
       'loop': 1,
-      'playlist': YOUTUBE_VIDEO_ID
+      'playlist': YOUTUBE_VIDEO_ID,
+      'playsinline': 1 // Essential for mobile browsers (iOS/Android)
+    },
+    events: {
+      'onReady': function(event) {
+        playerReady = true;
+        event.target.unMute();
+        event.target.setVolume(100);
+      }
     }
   });
-}
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+  const introOverlay = document.getElementById("intro-overlay");
+  const introEnvelope = document.getElementById("intro-envelope");
+
+  // Open intro envelope, trigger confetti, and force audio playback on touch
+  introEnvelope.addEventListener("click", () => {
+    introEnvelope.classList.add("open");
+
+    // Force playback on user touch/click gesture
+    if (ytPlayer && typeof ytPlayer.playVideo === 'function') {
+      ytPlayer.unMute();
+      ytPlayer.playVideo();
+    }
+
+    confetti({
+      particleCount: 70,
+      spread: 80,
+      origin: { y: 0.6 },
+      colors: ['#8c7355', '#d98880', '#f7f3ed', '#ffb7b2']
+    });
+
+    setTimeout(() => {
+      introOverlay.classList.add("fade-out");
+    }, 600);
+  });
+
+  // ... rest of your existing script.js logic ...
+});
 
 document.addEventListener("DOMContentLoaded", () => {
   // Intro Envelope Elements

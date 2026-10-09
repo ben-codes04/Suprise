@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Surprise! 🎉</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Google Fonts for Handwriting & Aesthetic Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@0,600;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <!-- Canvas Confetti Library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <!-- YouTube IFrame Player API -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+</head>
+<body>
+
+  <!-- ==================== INTRO ENVELOPE OVERLAY ==================== -->
+  <div class="intro-overlay" id="intro-overlay">
+    <div class="intro-wrapper" id="intro-envelope">
+      <p class="intro-hint">A Special Surprise For You!<br><span>(Click to Open)</span></p>
+      <div class="intro-envelope">
+        <div class="intro-flap"></div>
+        <div class="intro-pocket"></div>
+        <div class="intro-seal">💖</div>
+      </div>
+    </div>
+  </div>
+  <!-- ================================================================ -->
+
+  <main class="scrapbook-container">
+    <!-- Header -->
+    <header class="header">
+      <span class="tag">SURPRISE! 🎉</span>
+      <h1 class="title">Happy Birthday, Angel!</h1>
+      <p class="subtitle">Tap the photos to trigger a fun surprise!</p>
+    </header>
+
+    <!-- Interactive Polaroid Stack -->
+    <section class="polaroid-section">
+      <div class="polaroid-card" id="polaroid" data-index="0">
+        <div class="tape"></div>
+        <div class="photo-frame">
+          <img id="card-img" src="cute.jpg" alt="Memory" />
+        </div>
+        <div class="caption-area">
+          <p id="card-caption"></p>
+          <span id="card-date" class="date">HAPPY BIRTHDAY!</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dynamic Letter / Scrapbook Note -->
+    <section class="note-card">
+      <h2 class="note-title">A Little Note For You 💌</h2>
+      <p id="note-text" class="note-body">
+        Wishing you a day filled with love, laughter, and all the things that make you happiest. You deserve the best!
+      </p>
+
+      <!-- Action Buttons -->
+      <div class="actions">
+        <button id="next-btn" class="btn primary-btn">Next</button>
+        <button id="secret-btn" class="btn secondary-btn hidden">Letter for you! 💌</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Secret Message Modal (Extra Twist) -->
+  <div class="modal-overlay" id="secret-modal">
+    <div class="modal-content">
+      <span class="close-modal" id="close-modal">&times;</span>
+      <div class="modal-stamp">Letter</div>
+      <h2>Letter for you! 💕</h2>
+      
+      <div class="modal-letter-body">
+        <p>Happy Birthday, Angel! 💖</p>
+
+        <p>
+          If you made it all the way to this hidden corner of the site, I just wanted to take a moment to write something a bit more meaningful for your special day. I didn't want to leave you with just a short, casual greeting because you genuinely deserve a proper appreciation message.
+        </p>
+
+        <p>
+          I want you to know how deeply I appreciate having you in my life. You bring such a natural brightness, warmth, and incredible positive energy wherever you go and honest conversations with you are always something I value. Thank you for being such a genuine, reliable, and wonderful person.
+        </p>
+
+        <p>
+          As you step into another year, my biggest wish for you is that you continue chasing everything that makes you happy. I hope this year brings you non-stop laughter, good health, peace of mind, and all the success you deserve in everything you set your mind to.
+        </p>
+
+        <p>
+          Never stop shining and being unapologetically yourself. Enjoy every single second of your birthday today you deserve all the celebration in the world! ✨
+        </p>
+
+        <p class="modal-sig">With lots of appreciation,<br><span>Benedict</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hidden YouTube Background Player -->
+  <div id="youtube-player" style="display: none;"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
